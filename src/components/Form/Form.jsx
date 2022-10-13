@@ -11,15 +11,21 @@ export default function Form() {
   const { contacts, isLoading, error } = useSelector(state => state);
 
   return (
-    <div className={s.wrap}>
-      <Section title="Phonebook">
-        <FormInput />
-      </Section>
-      <Section title="Contacts">
-        {isLoading && !error && <Loader />}
-        {contacts.length > 0 && <SearchContact />}
-        <Contacts />
-      </Section>
-    </div>
+    <>
+      <div className={s.wrap}>
+        <div className={s.user}>
+          <p>mango@mail.com</p>
+          <button className={s.button}>Logout</button>
+        </div>
+        <Section title="Phonebook">
+          <FormInput />
+        </Section>
+        <Section title="Contacts">
+          {isLoading && !error && <Loader />}
+          {contacts.length > 0 && <SearchContact />}
+          <Contacts />
+        </Section>
+      </div>
+    </>
   );
 }

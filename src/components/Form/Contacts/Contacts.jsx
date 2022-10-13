@@ -28,7 +28,7 @@ const Contacts = () => {
     return (
       <div className={s.wrap}>
         <img
-          src="http://www.quickmeme.com/img/26/2677b78624b1858a57d99e67c38e124dba7f6d7bd1428ec4836ab03729a5a5dd.jpg"
+          src="https://i.pinimg.com/236x/0e/f2/8d/0ef28d8ff51cf563124538ae3323e5d6.jpg"
           alt="smile"
           width="300"
         />

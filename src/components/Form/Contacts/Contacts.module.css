@@ -23,19 +23,18 @@
   display: block;
 
   padding: 10px 20px;
-  background: #435f97;
-  color: white;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  font-weight: 700;
+  background: #fff;
+  color: black;
+
+  font-weight: 00;
   letter-spacing: 2px;
   transition: 0.2s all ease-in-out;
   outline: none;
   border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 3px 3px 1px 1px #ec7839, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #fff583, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
 
 .button:hover {
-  background: #ec7839;
   border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 3px 3px 1px 1px #435f97, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #fc9fff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }

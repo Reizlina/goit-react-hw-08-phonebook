@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { addNewContact } from '../../../redux/operations';
+import { postContacts } from 'redux/authOperations';
+// import { addNewContact } from '../../../redux/operations';
 // import { nanoid } from 'nanoid';
 
 import Notiflix from 'notiflix';
@@ -15,7 +16,7 @@ export default function FormInput() {
     const contactName = form.elements.name.value;
     const contactNumber = form.elements.number.value;
 
-    const nameOfContact = contacts.find(
+    const nameOfContact = contacts?.find(
       contact => contact.name === contactName
     );
 
@@ -29,7 +30,7 @@ export default function FormInput() {
       form.name.value = '';
       return;
     }
-    dispatch(addNewContact({ name: contactName, phone: contactNumber }));
+    dispatch(postContacts({ name: contactName, number: contactNumber }));
     form.reset();
   };
 

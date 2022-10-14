@@ -1,17 +1,23 @@
 import { useSelector, useDispatch } from 'react-redux';
 // import { remove } from 'redux/slice';
-import { fetchContacts, deleteSomeContact } from 'redux/operations';
+import { getContacts, deleteContacts } from 'redux/authOperations';
 import { useEffect } from 'react';
 
 import s from './Contacts.module.css';
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const { contacts, filter } = useSelector(state => state);
+  const { contactReducer, persistedReducer } = useSelector(state => state);
+  const { contacts, filter } = contactReducer;
+  const { token } = persistedReducer;
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    // console.log(token);
+    if (token) {
+      dispatch(getContacts());
+    }
+    // eslint-disable-next-line
+  }, [token]);
 
   const filterContact = () => {
     if (!filter) {
@@ -37,14 +43,14 @@ const Contacts = () => {
   } else {
     return (
       <ul className={s.list}>
-        {resultArr.map(({ name, phone, id }) => (
+        {resultArr.map(({ name, number, id }) => (
           <li key={id} className={s.item}>
             <p>
-              {name}: {phone}
+              {name}: {number}
             </p>
             <button
               className={s.button}
-              onClick={() => dispatch(deleteSomeContact(id))}
+              onClick={() => dispatch(deleteContacts(id))}
             >
               Delete contact
             </button>

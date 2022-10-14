@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logout } from 'redux/authOperations';
 import s from './Form.module.css';
 
 import Section from './Section/Section';
@@ -8,14 +10,24 @@ import Contacts from './Contacts/Contacts';
 import SearchContact from './SearchContact/SearchContact';
 
 export default function Form() {
-  const { contacts, isLoading, error } = useSelector(state => state);
+  const { contactReducer, persistedReducer } = useSelector(state => state);
+  const { contacts, isLoading, error } = contactReducer;
+  const { user } = persistedReducer;
+
+  const dispatch = useDispatch();
+  const handleLogout = e => {
+    e.preventDefault();
+    dispatch(logout());
+  };
 
   return (
     <>
       <div className={s.wrap}>
         <div className={s.user}>
-          <p>mango@mail.com</p>
-          <button className={s.button}>Logout</button>
+          <p>{user.email}</p>
+          <button onClick={handleLogout} className={s.buttonLogout}>
+            Logout
+          </button>
         </div>
         <Section title="Phonebook">
           <FormInput />

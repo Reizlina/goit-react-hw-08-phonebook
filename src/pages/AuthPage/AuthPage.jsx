@@ -1,36 +1,47 @@
 import s from './AuthPage.module.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { register, login } from '../../redux/authOperations';
 import Section from 'components/Form/Section/Section';
 
 function AuthPage() {
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [userName, setUserName] = useState('');
+  const [name, setName] = useState('');
+  const [passwordShown, setPasswordShown] = useState(false);
   const [flag, setFlag] = useState(false);
 
-  const navigateUser = () => {
-    reset();
-  };
+  //   const navigateUser = () => {
+  //     reset();
+  //   };
 
   const handleChangeInput =
     name =>
     ({ target: { value } }) => {
       if (name === 'email') {
         setEmail(value);
-      } else {
+      } else if (name === 'password') {
         setPassword(value);
+      } else {
+        setName(value);
       }
     };
 
   const onRegister = e => {
     e.preventDefault();
+    dispatch(register({ name, email, password }));
+    reset();
   };
 
   const onLogin = e => {
     e.preventDefault();
+    dispatch(login({ email, password }));
+    reset();
   };
 
   const navigateAuth = () => {
@@ -38,10 +49,14 @@ function AuthPage() {
     setFlag(!flag);
   };
 
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   const reset = () => {
     setEmail('');
     setPassword('');
-    setUserName('');
+    setName('');
   };
 
   return (
@@ -50,8 +65,8 @@ function AuthPage() {
         <form>
           {flag ? (
             <input
-              value={userName}
-              onChange={handleChangeInput('userName')}
+              value={name}
+              onChange={handleChangeInput('Name')}
               placeholder="Name"
               className={s.input}
               type="text"
@@ -77,14 +92,28 @@ function AuthPage() {
             label="Password"
             value={password}
             onChange={handleChangeInput('password')}
+            type={passwordShown ? 'text' : 'password'}
             placeholder="Password"
-            className={s.input}
+            className={s.inputPass}
           />
-          <button onClick={flag ? onRegister : onLogin} className={s.button}>
+
+          <button
+            className={s.btnToggle}
+            onClick={togglePassword}
+            type="button"
+          >
+            Show password
+          </button>
+
+          <button
+            type="submit"
+            onClick={flag ? onRegister : onLogin}
+            className={s.button}
+          >
             {flag ? 'Register' : 'Login'}
           </button>
         </form>
-        <button onClick={navigateAuth} className={s.buttonLog}>
+        <button type="button" onClick={navigateAuth} className={s.buttonLog}>
           {flag ? 'Go login' : 'Go register'}
         </button>
       </Section>

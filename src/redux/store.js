@@ -37,9 +37,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-// !_-----------------------
-// export const store = configureStore({
-//   reducer: contactReducer,
-// });
-
-// export default store;

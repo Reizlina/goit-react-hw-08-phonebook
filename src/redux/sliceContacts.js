@@ -32,11 +32,13 @@ const contactSlice = createSlice({
         ...state,
         isLoading: false,
         error: null,
-        contacts: [...state.contacts, ...payload],
+        contacts: [...payload],
       };
     },
     [getContacts.rejected]: handleRejected,
+
     //   //* ====================
+
     [postContacts.pending]: handlePending,
     [postContacts.fulfilled]: (state, { payload }) => {
       return {
@@ -47,7 +49,9 @@ const contactSlice = createSlice({
       };
     },
     [postContacts.rejected]: handleRejected,
+
     //* ====================
+
     [deleteContacts.pending]: handlePending,
     [deleteContacts.fulfilled]: (state, { payload }) => {
       return {

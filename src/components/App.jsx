@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -9,10 +9,13 @@ import MainPage from 'pages/MainPage';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { token } = useSelector(state => state.persistedReducer);
 
   useEffect(() => {
-    dispatch(currentUser());
-  }, [dispatch]);
+    if (token) {
+      dispatch(currentUser());
+    }
+  }, [dispatch, token]);
 
   return (
     <Routes>

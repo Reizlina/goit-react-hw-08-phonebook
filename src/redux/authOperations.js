@@ -60,11 +60,8 @@ export const currentUser = createAsyncThunk(
   async (_, thunkApi) => {
     const state = thunkApi.getState();
     const token = state.persistedReducer.token;
-
-    if (token === null) {
-      return thunkApi.rejectWithValue('Error');
-    }
     tokenAxios.set(token);
+
     try {
       const { data } = await axios.get('/users/current');
       return data;
@@ -90,13 +87,7 @@ export const getContacts = createAsyncThunk(
   'getContacts',
   async (_, thunkApi) => {
     try {
-      const state = thunkApi.getState();
-      const token = state.persistedReducer.token;
-      const { data } = await axios.get('/contacts', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await axios.get('/contacts');
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -133,3 +124,5 @@ export const deleteContacts = createAsyncThunk(
 
 // simpson12345Sim
 // simpson123@gmail.com
+
+// Як очистити контакти при виході із облікового запису?

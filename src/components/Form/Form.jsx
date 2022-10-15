@@ -1,5 +1,4 @@
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/authOperations';
 import s from './Form.module.css';
 

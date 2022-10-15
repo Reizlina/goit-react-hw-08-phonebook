@@ -6,7 +6,8 @@ import s from './FormInput.module.css';
 
 export default function FormInput() {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(state => state);
+  const { contactReducer } = useSelector(state => state);
+  const { contacts } = contactReducer;
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -21,8 +22,10 @@ export default function FormInput() {
     if (nameOfContact) {
       Notiflix.Notify.failure(`${contactName} is already in contacts`, {
         position: 'center-center',
+        fontSize: '20px',
         failure: {
           background: '#ec7839',
+          notiflixIconColor: 'white',
         },
       });
       form.name.value = '';

@@ -39,7 +39,6 @@ const contactSlice = createSlice({
     //   //* ====================
     [postContacts.pending]: handlePending,
     [postContacts.fulfilled]: (state, { payload }) => {
-      console.log(state, payload);
       return {
         ...state,
         isLoading: false,

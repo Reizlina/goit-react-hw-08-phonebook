@@ -1,7 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { postContacts } from 'redux/authOperations';
-// import { addNewContact } from '../../../redux/operations';
-// import { nanoid } from 'nanoid';
 
 import Notiflix from 'notiflix';
 import s from './FormInput.module.css';

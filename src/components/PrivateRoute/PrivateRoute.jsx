@@ -6,7 +6,7 @@ const PrivateRoute = () => {
   const { isLogin } = persistedReducer;
 
   if (!isLogin) {
-    return <Navigate to="/auth" />;
+    return <Navigate replace to="/auth" />;
   }
   return <Outlet />;
 };

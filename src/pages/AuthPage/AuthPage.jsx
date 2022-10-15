@@ -1,13 +1,11 @@
 import s from './AuthPage.module.css';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { register, login } from '../../redux/authOperations';
 import Section from 'components/Form/Section/Section';
 
 function AuthPage() {
-  //   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
@@ -15,10 +13,6 @@ function AuthPage() {
   const [name, setName] = useState('');
   const [passwordShown, setPasswordShown] = useState(false);
   const [flag, setFlag] = useState(false);
-
-  //   const navigateUser = () => {
-  //     reset();
-  //   };
 
   const handleChangeInput =
     name =>
@@ -45,7 +39,6 @@ function AuthPage() {
   };
 
   const navigateAuth = () => {
-    // change flag on opposite
     setFlag(!flag);
   };
 

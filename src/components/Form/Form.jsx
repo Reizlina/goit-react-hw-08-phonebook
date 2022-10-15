@@ -13,8 +13,9 @@ export default function Form() {
   const { contactReducer, persistedReducer } = useSelector(state => state);
   const { contacts, isLoading, error } = contactReducer;
   const { user } = persistedReducer;
-
+  console.log(contacts);
   const dispatch = useDispatch();
+
   const handleLogout = e => {
     e.preventDefault();
     dispatch(logout());

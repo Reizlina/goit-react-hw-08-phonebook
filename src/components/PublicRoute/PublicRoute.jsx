@@ -6,7 +6,7 @@ const PublicRoute = () => {
   const { isLogin } = persistedReducer;
 
   if (isLogin) {
-    <Navigate to="/main" />;
+    return <Navigate replace to="/main" />;
   }
   return <Outlet />;
 };

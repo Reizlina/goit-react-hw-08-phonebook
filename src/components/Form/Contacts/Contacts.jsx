@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import { remove } from 'redux/slice';
 import { getContacts, deleteContacts } from 'redux/authOperations';
 import { useEffect } from 'react';
 
@@ -12,7 +11,6 @@ const Contacts = () => {
   const { token } = persistedReducer;
 
   useEffect(() => {
-    // console.log(token);
     if (token) {
       dispatch(getContacts());
     }

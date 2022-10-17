@@ -12,6 +12,7 @@
 
 .item {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
@@ -19,22 +20,10 @@
   width: 500px;
 }
 
-.button {
-  display: block;
-
-  padding: 10px 20px;
-  background: #fff;
-  color: black;
-
-  font-weight: 00;
-  letter-spacing: 2px;
-  transition: 0.2s all ease-in-out;
-  outline: none;
-  border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 3px 3px 1px 1px #fff583, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+.btnBox {
+  display: flex;
 }
 
-.button:hover {
-  border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 3px 3px 1px 1px #fc9fff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+.buttonEdit {
+  transition: 0.2s all ease-in-out;
 }

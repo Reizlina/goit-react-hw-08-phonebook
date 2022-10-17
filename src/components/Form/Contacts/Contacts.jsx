@@ -1,6 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts, deleteContacts } from 'redux/authOperations';
 import { useEffect } from 'react';
+import Popper from '../Popper/Popper';
+
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+// import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
 import s from './Contacts.module.css';
 
@@ -42,16 +47,20 @@ const Contacts = () => {
     return (
       <ul className={s.list}>
         {resultArr.map(({ name, number, id }) => (
-          <li key={id} className={s.item}>
+          <li key={id} className={s.item} id={id}>
             <p>
               {name}: {number}
             </p>
-            <button
-              className={s.button}
-              onClick={() => dispatch(deleteContacts(id))}
-            >
-              Delete contact
-            </button>
+            <div className={s.btnBox}>
+              <IconButton
+                onClick={() => dispatch(deleteContacts(id))}
+                // className={s.button}
+                sx={{ marginRight: '10px', transition: '0.3s' }}
+              >
+                <DeleteIcon />
+              </IconButton>
+              <Popper />
+            </div>
           </li>
         ))}
       </ul>
@@ -60,3 +69,5 @@ const Contacts = () => {
 };
 
 export default Contacts;
+
+// import Fade from '@mui/material/Fade';

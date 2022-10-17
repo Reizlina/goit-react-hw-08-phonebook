@@ -119,6 +119,19 @@ export const deleteContacts = createAsyncThunk(
   }
 );
 
+export const editContacts = createAsyncThunk(
+  'editContacts',
+  async ({ id, name, number }, thunkApi) => {
+    const user = { name, number };
+    try {
+      const { data } = await axios.patch(`/contacts/${id}`, user);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
 // reizlinaReizlina123
 // reizlina@mail.ua
 

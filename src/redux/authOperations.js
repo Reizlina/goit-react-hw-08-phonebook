@@ -137,5 +137,3 @@ export const editContacts = createAsyncThunk(
 
 // simpson12345Sim
 // simpson123@gmail.com
-
-// Як очистити контакти при виході із облікового запису?

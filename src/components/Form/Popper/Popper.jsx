@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Popover from '@mui/material/Popover';
 import IconButton from '@mui/material/IconButton';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import ClearIcon from '@mui/icons-material/Clear';
 import Notiflix from 'notiflix';
 
 import { editContacts } from 'redux/authOperations';
@@ -106,6 +107,12 @@ export default function SimplePopper() {
           }}
         >
           <form onSubmit={handleSubmit} className={s.form}>
+            <IconButton
+              onClick={handleClose}
+              sx={{ position: 'absolute', top: '0', right: '0' }}
+            >
+              <ClearIcon />
+            </IconButton>
             <input
               onChange={handleChangeInput('name')}
               value={name}

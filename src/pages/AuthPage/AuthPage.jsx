@@ -82,6 +82,7 @@ function AuthPage() {
             name="password"
             required
             id="password"
+            min="7"
             label="Password"
             value={password}
             onChange={handleChangeInput('password')}

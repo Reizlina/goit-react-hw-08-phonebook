@@ -96,7 +96,7 @@ function AuthPage() {
             onClick={togglePassword}
             type="button"
           >
-            Show password
+            {passwordShown ? 'Hide password' : 'Show password'}
           </button>
 
           <button
